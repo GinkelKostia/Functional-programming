@@ -9,6 +9,7 @@ sbt-launch.jar
 
 target/
 .scala-build/
+.bloop/
 
 .vscode/
 project/
