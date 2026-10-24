@@ -1,6 +1,5 @@
 scalaVersion := "3.9.0"
-name := "23_runner"
+name := "BattlePass"
 version := "1.0.0"
 
-// Без важких зовнішніх бібліотек - чистий функціональний Scala
-fork := true
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.20" % "test"

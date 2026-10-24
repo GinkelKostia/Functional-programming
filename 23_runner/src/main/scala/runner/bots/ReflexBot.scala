@@ -38,19 +38,13 @@ class ReflexBot(seed: Long = 202L) extends CyberBot:
       return true
 
   private def changeLane(slice: TunnelSlice, lane: Lane): Action =
-      val leftLane = lane match
-        case Lane.Right => Lane.Center
-        case Lane.Center => Lane.Left
-        case Lane.Left => Lane.Left
-      val rightLane = lane match
-        case Lane.Right => Lane.Right
-        case Lane.Center => Lane.Right
-        case Lane.Left => Lane.Center
+      val leftLane = lane.left
+      val rightLane = lane.right
 
-      if lane != Lane.Left && isFreeLane(slice, leftLane, true) then return Action.MoveLeft
-      if lane != Lane.Right && isFreeLane(slice, rightLane, true) then return Action.MoveRight
+      if lane != Lane.Left && leftLane.exists(isFreeLane(slice, _, true)) then return Action.MoveLeft
+      if lane != Lane.Right && rightLane.exists(isFreeLane(slice, _, true)) then return Action.MoveRight
 
-      if lane != Lane.Left && isFreeLane(slice, leftLane, false) then return Action.MoveLeft
-      if lane != Lane.Right && isFreeLane(slice, rightLane, false) then return Action.MoveRight
+      if lane != Lane.Left && leftLane.exists(isFreeLane(slice, _, false)) then return Action.MoveLeft
+      if lane != Lane.Right && rightLane.exists(isFreeLane(slice, _, false)) then return Action.MoveRight
 
       return Action.KeepRunning
