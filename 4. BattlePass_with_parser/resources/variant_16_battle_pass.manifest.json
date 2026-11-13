@@ -1,0 +1,16 @@
+{
+  "variantId": 16,
+  "slug": "battle_pass",
+  "rows": 500000,
+  "seed": 16000090,
+  "errorRate": 0.05,
+  "rowOutcomes": {
+    "valid": 475098,
+    "type_int_malformed": 9200,
+    "unknown_event": 2967,
+    "type_positive_int_violation": 9411,
+    "empty_event": 1278,
+    "column_count": 2046
+  },
+  "csv": "generated\\variant_16_battle_pass.csv"
+}
